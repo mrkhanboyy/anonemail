@@ -106,7 +106,7 @@ public class OuterLinks {
 	 * method setting atomic variable {total} value to 1 every 23:59 P.M 
 	 * 
 	 */
-	@Scheduled(cron = "0 59 23 */ */ */", zone = "Indian/Maldives")
+	@Scheduled(cron = "0 59 23 * * *", zone = "Indian/Maldives")
 	private void cronJob() {
 		setToInitial(1);
 	}

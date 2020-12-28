@@ -1,0 +1,14 @@
+input,
+textarea {
+  border-radius: 0px !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid grey;
+  padding: 10px !important;
+  transition: 0.7s all !important;
+}
+
+input:focus,
+textarea:focus {
+  border-bottom: 3px solid green !important;
+}

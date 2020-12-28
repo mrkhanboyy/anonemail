@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnonyMail</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link
+	th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css}"
+	rel="stylesheet">
+</head>
+
+<body>
+	<nav class="navbar navbar-light bg-warning">
+		<div class="container-fluid">
+			<a class="navbar-brand ms-5 p-0" href="#" th:href="@{/}"> <img
+				th:src="@{/images/anony mail.png}" alt="" width="80" height="70"
+				class="d-inline-block align-top">
+
+			</a>
+		</div>
+	</nav>
+
+	<div th:if="${content != null}">
+		<div th:if="${isValid == true}" th:text="${finally}"
+			class="alert alert-success " role="alert"></div>
+		<div th:if="${isValid == false}">
+			<div th:text="${finally}" class="alert alert-danger" role="alert"></div>
+			<div th:each="data : ${errorsList}">
+				<div th:text="${data}" class="alert alert-secondary " role="alert"></div>
+			</div>
+
+		</div>
+	</div>
+	<!-- form start -->
+
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-8 col-sm-8 col-md-6 col-lg-5 mx-auto">
+
+				<h3 class="py-3 ">SEND FREE ANONYMOUS MAIL</h3>
+				<form action="#" th:action="@{/mail/send}" method="post"
+					th:object="${MailRequest}" class="mb-5">
+
+					<div class="mb-3">
+						<label for="from" class="form-label">FROM</label> <input
+							type="email" th:value="${MailRequest.from}" class="form-control"
+							name="from" aria-describedby="emailHelp" required>
+					</div>
+					<div class="mb-3">
+						<label for="to" class="form-label">TO</label> <input type="email"
+							th:value="${MailRequest.to}" class="form-control" name="to"
+							aria-describedby="emailHelp" required>
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">SUBJECT</label>
+						<input type="text" th:value="${MailRequest.subject}"
+							maxlength="50" class="form-control" name="subject"
+							aria-describedby="emailHelp" required>
+					</div>
+					<div class="mb-3">
+						<label for="exampleFormControlTextarea1" class="form-label">TEXT</label>
+						<textarea th:value="${MailRequest.text}" class="form-control"
+							name="text" rows="3" required maxlength="400"></textarea>
+					</div>
+
+					<button type="submit" class="btn btn-primary mb-5 px-3 py-1">SEND</button>
+				</form>
+
+			</div>
+
+		</div>
+
+
+	</div>
+	<!-- form end -->
+
+	<div class="alert alert-secondary text-center ">
+		This email service is not for spam.<br> we shall not be
+		responsible or liable for any misuse.
+	</div>
+
+
+	<script
+		th:src="@{https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js}"></script>
+	<script
+		th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
